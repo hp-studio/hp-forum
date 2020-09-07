@@ -6,10 +6,9 @@
 </template>
 
 <style lang="scss">
-  @import "./style/index.scss";
+/*引入全局样式*/
+@import "./style/index.scss";
+
 #app {
-
 }
-
-
 </style>
