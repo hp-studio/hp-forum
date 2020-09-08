@@ -7,7 +7,7 @@
       mode="horizontal"
       style="flex:1"
       :active-name="activeName"
-      @on-select="onMenuSelected"
+      @on-select="handleMenuSelect"
     >
       <MenuItem name="home-index">
         <Icon type="ios-home" />
@@ -23,7 +23,12 @@
       </MenuItem>
     </Menu>
     <div class="home-menu-item">
-      <Input search placeholder="请输入搜索内容" />
+      <Input
+        search
+        placeholder="请输入搜索内容"
+        v-model="searchWord"
+        @on-search="handleSearch(searchWord)"
+      />
     </div>
     <div class="home-menu-item home-menu-self">
       <!--      判断用户是否登陆-->
@@ -55,7 +60,8 @@ export default {
   name: "HomeMenu",
   data() {
     return {
-      activeName: this.$route.meta.homeMenuName
+      activeName: this.$route.meta.homeMenuName,
+      searchWord: ""
     };
   },
   mounted() {
@@ -68,12 +74,16 @@ export default {
   },
   methods: {
     // 监听导航点击
-    onMenuSelected(MenuItemName) {
+    handleMenuSelect(MenuItemName) {
       if (MenuItemName !== this.activeName) {
         this.$router.push({
           name: MenuItemName
         });
       }
+    },
+    // 搜索
+    handleSearch(searchWord) {
+      console.log("搜索中，搜索内容为：" + searchWord);
     }
   }
 };
