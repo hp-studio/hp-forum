@@ -22,22 +22,29 @@
         公告
       </MenuItem>
     </Menu>
+    <div class="home-menu-item">
+      <Input search placeholder="请输入搜索内容" />
+    </div>
     <div class="home-menu-item home-menu-self">
-      <Button
-        title="搜索"
-        class="home-menu-self-item"
-        shape="circle"
-        icon="ios-search"
-      ></Button>
-      <Button
-        title="消息"
-        class="home-menu-self-item"
-        shape="circle"
-        icon="ios-chatboxes"
-      ></Button>
+      <!--      判断用户是否登陆-->
+      <template v-if="$store.state.user.userStat">
+        <Button
+          title="消息"
+          class="home-menu-self-item"
+          shape="circle"
+          icon="ios-chatboxes"
+        ></Button>
+        <Avatar
+          title="个人设置"
+          class="home-menu-self-item home-menu-self-avatar"
+          src="https://i.loli.net/2017/08/21/599a521472424.jpg"
+        />
+      </template>
       <Avatar
+        title="请登录"
+        v-else
         class="home-menu-self-item home-menu-self-avatar"
-        src="https://i.loli.net/2017/08/21/599a521472424.jpg"
+        icon="ios-person"
       />
     </div>
   </div>
@@ -48,11 +55,10 @@ export default {
   name: "HomeMenu",
   data() {
     return {
-      activeName: ""
+      activeName: this.$route.meta.homeMenuName
     };
   },
   mounted() {
-    this.activeName = this.$route.meta.homeMenuName || "";
     //  监听路由
     this.$router.beforeEach((to, from, next) => {
       // ...
