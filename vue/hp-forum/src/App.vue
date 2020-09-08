@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    app
     <router-view />
   </div>
 </template>
@@ -10,5 +9,7 @@
 @import "./style/index.scss";
 
 #app {
+  width: 100vw;
+  height: 100vh;
 }
 </style>
