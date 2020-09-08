@@ -1,0 +1,15 @@
+datasource:
+  config:
+    master:
+      driver: com.mysql.cj.jdbc.Driver
+      password: wjj1234
+      url: jdbc:mysql://111.229.155.159:3306/
+      userName: wjj
+server:
+  port: 8901
+spring:
+  application:
+    name: forummain
+  cloud:
+    nacos:
+      server-addr: localhost:8848
