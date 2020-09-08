@@ -1,15 +1,23 @@
 <template>
-    <div>
-home
-    </div>
+  <div class="home">
+    <home-menu></home-menu>
+    <router-view />
+  </div>
 </template>
 
 <script>
-    export default {
+import HomeMenu from "./components/HomeMenu";
 
-    }
+export default {
+  name: "home",
+  components: { "home-menu": HomeMenu }
+};
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.home {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
 </style>
