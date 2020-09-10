@@ -36,19 +36,32 @@ public final class Result {
         this.data = data;
     }
 
+    //传状态码和数据
+    public static Result success(int code, Object data) {
+        return new Result(code, SUCCESS_MSG, data);
+    }
 
+    //状态码=0 传数据
     public static Result success(Object data) {
         return new Result(SUCCESS_CODE, SUCCESS_MSG, data);
     }
 
+    //状态码=0 数据=1
     public static Result success() {
         return new Result(SUCCESS_CODE, SUCCESS_MSG, 1);
     }
 
+    //传状态码和数据
+    public static Result fail(int code, Object data) {
+        return new Result(code, FAIL_MSG, data);
+    }
+
+    //状态码=1  传数据
     public static Result fail(Object data) {
         return new Result(FAIL_CODE, FAIL_MSG, data);
     }
 
+    //状态码=1 数据为空
     public static Result fail() {
         return new Result(FAIL_CODE, FAIL_MSG);
     }
