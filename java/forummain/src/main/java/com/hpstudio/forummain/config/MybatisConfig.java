@@ -3,6 +3,7 @@ package com.hpstudio.forummain.config;
 import com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties;
 import com.baomidou.mybatisplus.core.MybatisConfiguration;
 import com.baomidou.mybatisplus.core.config.GlobalConfig;
+import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -29,6 +30,13 @@ public class MybatisConfig {
         properties.setConfiguration(mybatisConfiguration());
         properties.setGlobalConfig(globalConfig());
         return properties;
+    }
+
+    //分页插件
+    @Bean
+    public PaginationInnerInterceptor paginationInnerInterceptor() {
+        PaginationInnerInterceptor paginationInnerInterceptor = new PaginationInnerInterceptor();
+        return paginationInnerInterceptor;
     }
 
     public MybatisConfiguration mybatisConfiguration() {
