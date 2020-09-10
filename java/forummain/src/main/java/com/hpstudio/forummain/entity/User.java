@@ -11,7 +11,7 @@ import org.springframework.data.annotation.Id;
 @Data
 public class User {
     @Id
-    private int id;
+    private Integer id;
 
     private String userName;
 
