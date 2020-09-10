@@ -93,7 +93,6 @@ export default {
 .home-menu {
   display: flex;
   align-items: center;
-
   .home-menu-item {
     height: 60px;
     line-height: 60px;
