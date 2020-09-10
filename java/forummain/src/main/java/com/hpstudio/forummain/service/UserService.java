@@ -1,6 +1,8 @@
 package com.hpstudio.forummain.service;
 
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hpstudio.forummain.entity.User;
 import com.hpstudio.forummain.mapper.UserMapper;
@@ -29,7 +31,11 @@ public class UserService extends ServiceImpl<UserMapper, User> {
     }
 
     public boolean updateUser(User user) throws IllegalAccessException {
-        UpdateWrapper<User> wrapper = updateWrapperUtil.updateById(user, true);
+        UpdateWrapper<User> wrapper = updateWrapperUtil.updateWrapper(user, true);
         return update(wrapper);
+    }
+
+    public IPage<User> selectUsers(int page, int limit) {
+        return baseMapper.selectUsers(new Page<>(page, limit));
     }
 }
