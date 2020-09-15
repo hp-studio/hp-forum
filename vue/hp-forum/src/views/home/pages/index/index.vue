@@ -1,30 +1,31 @@
 <template>
-    <div class="home-index">
-        <home-index-carousel></home-index-carousel>
-        <home-index-subjects></home-index-subjects>
+    <div class="index">
+        <Carousel></Carousel>
         <Divider/>
-        <home-index-posts></home-index-posts>
+        <Topics></Topics>
+        <Divider/>
+        <Posts></Posts>
     </div>
 </template>
 
 <script>
     import Carousel from "./components/Carousel"
-    import Subject from "./components/Subjects"
-    import Post from "./components/Posts"
+    import Topics from "./components/Topics"
+    import Posts from "./components/Posts"
 
     export default {
         name: "home-index",
         components: {
-            "home-index-carousel": Carousel,
-            "home-index-subjects": Subject,
-            "home-index-posts": Post
+            Carousel,
+            Topics,
+            Posts
         },
 
     };
 </script>
 
 <style lang="scss" scoped>
-    .home-index {
+    .index {
 
     }
 </style>
