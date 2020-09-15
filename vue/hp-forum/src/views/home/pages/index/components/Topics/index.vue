@@ -3,27 +3,40 @@
         专题列表
         <TopicCtrl></TopicCtrl>
         <Row>
-            <Col :xs="24" :sm="8" v-for="item in 3" :key="item">
+            <Col :xs="24" :sm="8" v-for="item in topicList.slice(0,3)" :key="item.title">
                 <div class="topics-topic topics-topic-hot">
-                    <div style="width:100%;height: 100px;background: cornflowerblue"></div>ColHot</div>
+                    <div style="width:100%;height: 100px;background: cornflowerblue"></div>
+                    {{item.title}}
+                </div>
             </Col>
-            <Col :xs="24" :sm="8" :lg="4" v-for="item in topicList" :key="item">
-                <div class="topics-topic">Col</div>
+            <Col :xs="24" :sm="8" :lg="4" v-for="item in topicList.slice(3)" :key="item.title">
+                <div class="topics-topic">{{item.title}}</div>
             </Col>
         </Row>
     </div>
 </template>
 
 <script>
-    import TopicCtrl from "./TopicCtrl"
+    import TopicCtrl from "./TopicCtrl";
+
     export default {
-        components:{TopicCtrl},
+        components: {TopicCtrl},
         data() {
             return {
-                topicList: 7
-            }
+                topicList: [
+                    {title: "1"},
+                    {title: "2"},
+                    {title: "3"},
+                    {title: "4"},
+                    {title: "5"},
+                    {title: "6"},
+                    {title: "7"},
+                    {title: "8"},
+                    {title: "9"}
+                ]
+            };
         }
-    }
+    };
 </script>
 
 <style lang="scss" scoped>
