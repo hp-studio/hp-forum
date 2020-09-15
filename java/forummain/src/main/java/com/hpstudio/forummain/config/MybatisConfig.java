@@ -20,8 +20,7 @@ public class MybatisConfig {
     @Bean
     public MybatisPlusProperties mybatisPlusProperties() {
         MybatisPlusProperties properties = new MybatisPlusProperties();
-        String[] locations = new String[1];
-        locations[0] = "classpath*:/mapper/*.xml";
+        String[] locations = {"classpath*:/mapper/*.xml"};
         //配置xml路径
         properties.setMapperLocations(locations);
         //启动检查xml是否存在

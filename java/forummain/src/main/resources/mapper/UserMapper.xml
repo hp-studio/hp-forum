@@ -7,6 +7,6 @@
     </select>
 
     <select id="selectUsers" resultType="com.hpstudio.forummain.entity.User">
-        select * from user where id = 2;
+        select * from user;
     </select>
 </mapper>
