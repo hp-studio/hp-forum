@@ -50,7 +50,7 @@
                         {required: true, message: '密码不能为空', trigger: 'blur'}
                     ],
                 }
-            }
+            };
         },
         methods: {
             login(user) {
@@ -60,7 +60,7 @@
                     } else {
                         this.$Message.error('Fail!');
                     }
-                })
+                });
 
                 this.$axios({
                     method: 'post',
@@ -75,9 +75,9 @@
                     //token本地存储
                     localStorage.setItem("token", data.data);
                     this.rememberOperating(this.remember);
-                    this.$router.replace({name: "home-index"})
+                    this.$router.replace({name: "home-index"});
                 }).catch(exception => {
-                    console.log(exception)
+                    console.log(exception);
                 });
             },
             wechatLogin() {
@@ -97,7 +97,7 @@
                 }
             }
         },
-        mounted() {
+        created() {
             let remember = localStorage.getItem("remember");
             if (null != remember) {
                 this.remember = true;
@@ -105,8 +105,11 @@
                 this.user.password = localStorage.getItem("password");
                 this.focusPwd = true;
             }
+        },
+        mounted() {
+
         }
-    }
+    };
 </script>
 
 <style lang="scss" scoped>
@@ -125,39 +128,38 @@
             left: 64%;
             top: 26%;
             /*背景颜色白色透明*/
-            background-color: rgba(255, 255, 255, .2);
+            background-color: rgba(255, 255, 255, .3);
             /*上下内边距0 左右内边距30px*/
             padding: 0 30px;
 
 
-            .title .body {
-                /*字体颜色*/
-                color: blanchedalmond;
-                /*居中*/
-                text-align: center;
-                /*下边距*/
-                margin-bottom: 10px;
-            }
+            .title {
+                .body {
+                    /*字体颜色*/
+                    color: blanchedalmond;
+                    /*居中*/
+                    text-align: center;
+                    /*下边距*/
+                    margin-bottom: 10px;
+                }
 
-            /*加中线*/
-            .title .sign .signWord:before, .title .sign .signWord:after {
-                content: ''; /*CSS伪类用法*/
-                position: absolute; /*定位背景横线的位置*/
-                /*top: 13%;*/
-                background: blanchedalmond; /*宽和高做出来的背景横线*/
-                width: 36%;
-                height: 2px;
-                line-height: 16px;
-            }
-
-            /*加中线*/
-            .title .sign .signWord:before {
-                left: 0%;
-            }
-
-            /*加中线*/
-            .title .sign .signWord:after {
-                right: 0%;
+                .sign {
+                    .signWord:before, .signWord:after {
+                        content: ''; /*CSS伪类用法*/
+                        position: absolute; /*定位背景横线的位置*/
+                        /*top: 13%;*/
+                        background: blanchedalmond; /*宽和高做出来的背景横线*/
+                        width: 36%;
+                        height: 2px;
+                        line-height: 16px;
+                    }
+                    .signWord:before {
+                        left: 0%;
+                    }
+                    .signWord:after {
+                        right: 0%;
+                    }
+                }
             }
 
             /*第三方登录鼠标移过去变小手*/
