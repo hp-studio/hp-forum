@@ -2,8 +2,8 @@
     <div class="login">
         <div class="parent">
             <div class="title">
-                <div><h3>憨批论坛</h3></div>
-                <div><h4>账号登录</h4></div>
+                <div class="body"><h3>憨批论坛</h3></div>
+                <div class="body sign"><h4 class="signWord">账号登录</h4></div>
             </div>
             <Form ref="user" :model="user" :rules="userValidate">
                 <FormItem prop="user">
@@ -13,7 +13,7 @@
                 </FormItem>
                 <FormItem prop="password">
                     <Input type="password" v-model="user.password" placeholder="密码" style="width: 300px "
-                    :autofocus="this.focusPwd">
+                           :autofocus="this.focusPwd">
                         <Icon type="md-lock" slot="prepend"/>
                     </Input>
                 </FormItem>
@@ -25,8 +25,8 @@
                 </FormItem>
             </Form>
             <div class="title">
-                <div><h4>第三方登录</h4></div>
-                <div class="thirdLogin">
+                <div class="body sign"><h4 class="signWord">第三方登录</h4></div>
+                <div class="body thirdLogin">
                     <Icon type="ios-chatbubbles" size="50" color="green" @click="wechatLogin"/>
                 </div>
             </div>
@@ -109,58 +109,66 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
     .login {
         width: 100%;
         height: 100%;
+        /*配合子级的绝对定位*/
         position: relative;
+        /*cover将背景图片比例扩张*/
         background: url("bg.jpg") center/cover no-repeat;
-    }
+
+        .parent {
+            width: 360px;
+            /*绝对定位调整整个登录框的位置*/
+            position: absolute;
+            left: 64%;
+            top: 26%;
+            /*背景颜色白色透明*/
+            background-color: rgba(255, 255, 255, .2);
+            /*上下内边距0 左右内边距30px*/
+            padding: 0 30px;
 
 
-    .parent {
-        width: 360px;
-        position: absolute;
-        left: 64%;
-        top: 26%;
-        background-color: rgba(255, 255, 255, .2);
-        padding: 0 30px;
-    }
+            .title .body {
+                /*字体颜色*/
+                color: blanchedalmond;
+                /*居中*/
+                text-align: center;
+                /*下边距*/
+                margin-bottom: 10px;
+            }
 
-    .ivu-form-item {
-        margin-bottom: 10px;
-    }
+            /*加中线*/
+            .title .sign .signWord:before, .title .sign .signWord:after {
+                content: ''; /*CSS伪类用法*/
+                position: absolute; /*定位背景横线的位置*/
+                /*top: 13%;*/
+                background: blanchedalmond; /*宽和高做出来的背景横线*/
+                width: 36%;
+                height: 2px;
+                line-height: 16px;
+            }
 
-    .loginCom {
-        display: block;
-    }
+            /*加中线*/
+            .title .sign .signWord:before {
+                left: 0%;
+            }
 
-    .title div {
-        color: blanchedalmond;
-        text-align: center;
-        margin-bottom: 10px;
-    }
+            /*加中线*/
+            .title .sign .signWord:after {
+                right: 0%;
+            }
 
+            /*第三方登录鼠标移过去变小手*/
+            .thirdLogin:hover {
+                cursor: pointer;
+            }
 
-    .title div h4:before, .title div h4:after {
-        content: ''; /*CSS伪类用法*/
-        position: absolute; /*定位背景横线的位置*/
-        /*top: 13%;*/
-        background: blanchedalmond; /*宽和高做出来的背景横线*/
-        width: 36%;
-        height: 2px;
-        line-height: 16px;
-    }
-
-    .title div h4:before {
-        left: 0%;
-    }
-
-    .title div h4:after {
-        right: 0%;
-    }
-
-    .thirdLogin:hover {
-        cursor: pointer;
+            /*表单输入框的下边距*/
+            .ivu-form-item {
+                margin-bottom: 10px;
+            }
+        }
     }
 </style>
