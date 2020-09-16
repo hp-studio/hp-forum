@@ -9,12 +9,7 @@
             <FormItem label="标题">
                 <Input v-model="topicForm.data.title" placeholder="请输入话题标题"></Input>
             </FormItem>
-            <FormItem label="所属话题">
-                <Select v-model="topicForm.data.topic" filterable>
-                    <Option v-for="item in topicList" :key="item.id" :value="item.id">{{item.title}}</Option>
-                </Select>
-            </FormItem>
-            <FormItem label="主楼内容">
+            <FormItem label="话题内容">
                 <quill-editor
                         ref="myQuillEditor"
                         v-model="topicForm.data.content"
@@ -36,7 +31,6 @@
                     type: "add",
                     data: {
                         title: "",
-                        topic: null,
                         content: ""
                     }
                 },
@@ -57,14 +51,13 @@
                     {id:3,title:'test3'},
                 ];
             },
-            // 创建帖子编辑表单
+            // 创建话题编辑表单
             open(type, data) {
                 this.topicForm = {
                     type: type,
                     data: {
                         ...{
                             title: "",
-                            topic: null,
                             content: ""
                         }, data
                     }
@@ -74,11 +67,11 @@
                 });
 
             },
-            //关闭帖子编辑表单
+            //关闭话题编辑表单
             closeTopicForm() {
                 this.isShow = false;
             },
-            // 提交帖子编辑表单
+            // 提交话题编辑表单
             submitTopicForm() {
                 console.log(this.topicForm);
             }
