@@ -21,6 +21,7 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    @CrossOrigin
     @PostMapping("login")
     @LoginToken(required = true)
     public Result login(@RequestBody User user) {
