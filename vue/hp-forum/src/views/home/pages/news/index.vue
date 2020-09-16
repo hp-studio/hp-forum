@@ -1,6 +1,7 @@
 <template>
   <div class="home-news">
     home-news
+    <Icon type="ios-albums" :size="50" />
   </div>
 </template>
 
@@ -10,4 +11,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+  .testIcon{
+  }
+</style>
