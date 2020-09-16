@@ -12,6 +12,7 @@ import VueQuillEditor from 'vue-quill-editor';
 import 'quill/dist/quill.core.css'; // import styles
 import 'quill/dist/quill.snow.css'; // for snow theme
 import 'quill/dist/quill.bubble.css'; // for bubble theme
+//注册axios（待封装）
 Vue.prototype.$axios = axios;
 
 Vue.use(ViewUI);
