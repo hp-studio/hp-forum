@@ -3,17 +3,21 @@
         <div class="parent">
             <div class="title">
                 <div class="body"><h3>憨批论坛</h3></div>
-                <div class="body sign"><h4 class="signWord">账号登录</h4></div>
+                <div class="body lineWord">
+                    <div class="line"></div>
+                    <div class="word">账号登录</div>
+                    <div class="line"></div>
+                </div>
             </div>
             <Form ref="user" :model="user" :rules="userValidate">
-                <FormItem prop="user">
+                <FormItem prop="id">
                     <Input type="text" v-model="user.id" placeholder="账号" style="width: 300px">
                         <Icon type="md-contact" slot="prepend"/>
                     </Input>
                 </FormItem>
                 <FormItem prop="password">
-                    <Input type="password" v-model="user.password" placeholder="密码" style="width: 300px "
-                           :autofocus="this.focusPwd">
+                    <Input ref="password" type="password" v-model="user.password" @on-enter="login"
+                           placeholder="密码" style="width: 300px">
                         <Icon type="md-lock" slot="prepend"/>
                     </Input>
                 </FormItem>
@@ -21,11 +25,15 @@
                     <Checkbox v-model="remember">记住密码</Checkbox>
                 </FormItem>
                 <FormItem>
-                    <Button type="primary" @click="login('user')" style="width: 300px">登录</Button>
+                    <Button type="primary" @click="login" style="width: 300px">登录</Button>
                 </FormItem>
             </Form>
             <div class="title">
-                <div class="body sign"><h4 class="signWord">第三方登录</h4></div>
+                <div class="body lineWord">
+                    <div class="line"></div>
+                    <div class="word">第三方登录</div>
+                    <div class="line"></div>
+                </div>
                 <div class="body thirdLogin">
                     <Icon type="ios-chatbubbles" size="50" color="green" @click="wechatLogin"/>
                 </div>
@@ -41,44 +49,47 @@
             return {
                 user: {id: "", password: ""},
                 remember: false,
-                focusPwd: false,
                 userValidate: {
                     id: [
                         {required: true, message: '账号不能为空', trigger: 'blur'}
                     ],
                     password: [
-                        {required: true, message: '密码不能为空', trigger: 'blur'}
-                    ],
+                        {required: true, message: '密码不能为空', trigger: 'blur'},
+                        {required: true, type: 'string', min: 6, message: '密码至少6位', trigger: 'blur'}
+                    ]
                 }
             };
         },
         methods: {
-            login(user) {
-                this.$refs[user].validate((valid) => {
+            login() {
+                var dataCheck = false;
+                this.$refs.user.validate((valid) => {
                     if (valid) {
+                        dataCheck = true;
                         this.$Message.success('Success!');
                     } else {
                         this.$Message.error('Fail!');
                     }
                 });
-
-                this.$axios({
-                    method: 'post',
-                    url: 'http://localhost:8900/login',
-                    data: this.user,
-                    responseType: 'json'
-                }).then(response => {
-                    let data = response.data;
-                    if (data.code == 1) {
-                        return alert(data.msg);
-                    }
-                    //token本地存储
-                    localStorage.setItem("token", data.data);
-                    this.rememberOperating(this.remember);
-                    this.$router.replace({name: "home-index"});
-                }).catch(exception => {
-                    console.log(exception);
-                });
+                if (true == dataCheck) {
+                    this.$axios({
+                        method: 'post',
+                        url: 'http://localhost:8900/login',
+                        data: this.user,
+                        responseType: 'json'
+                    }).then(response => {
+                        let data = response.data;
+                        if (data.code == 1) {
+                            return alert(data.msg);
+                        }
+                        //token本地存储
+                        localStorage.setItem("token", data.data);
+                        this.rememberOperating(this.remember);
+                        this.$router.replace({name: "home-index"});
+                    }).catch(exception => {
+                        console.log(exception);
+                    });
+                }
             },
             wechatLogin() {
                 alert("微信登录");
@@ -98,16 +109,16 @@
             }
         },
         created() {
+
+        },
+        mounted() {
             let remember = localStorage.getItem("remember");
             if (null != remember) {
                 this.remember = true;
                 this.user.id = localStorage.getItem("id");
                 this.user.password = localStorage.getItem("password");
-                this.focusPwd = true;
+                this.$refs.password.focus();
             }
-        },
-        mounted() {
-
         }
     };
 </script>
@@ -116,61 +127,53 @@
     .login {
         width: 100%;
         height: 100%;
-        /*配合子级的绝对定位*/
-        position: relative;
-        /*cover将背景图片比例扩张*/
-        background: url("bg.jpg") center/cover no-repeat;
+        /*background: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1600272364591&di=a10acdde9e861f1f637c1cadb4722d73&imgtype=0&src=http%3A%2F%2Fimgfs.oppo.cn%2Fdata%2Fattachment%2Fforum%2F201407%2F27%2F232217lttjpqqsctlts688.jpg") no-repeat;*/
+        /*background-size: 100% 100%;*/
 
         .parent {
             width: 360px;
-            /*绝对定位调整整个登录框的位置*/
-            position: absolute;
-            left: 64%;
-            top: 26%;
+            /*根据窗口定位*/
+            position: fixed;
+            right: 15%;
+            /*//垂直居中*/
+            top: 50%;
+            transform: translateY(-50%);
             /*背景颜色白色透明*/
-            background-color: rgba(255, 255, 255, .3);
+            background-color: rgba(255, 255, 255, .7);
             /*上下内边距0 左右内边距30px*/
-            padding: 0 30px;
-
+            padding: 10px 30px;
+            border-radius: 10px;
 
             .title {
                 .body {
                     /*字体颜色*/
-                    color: blanchedalmond;
+                    color: #000;
                     /*居中*/
                     text-align: center;
                     /*下边距*/
                     margin-bottom: 10px;
                 }
 
-                .sign {
-                    .signWord:before, .signWord:after {
-                        content: ''; /*CSS伪类用法*/
-                        position: absolute; /*定位背景横线的位置*/
-                        /*top: 13%;*/
-                        background: blanchedalmond; /*宽和高做出来的背景横线*/
-                        width: 36%;
+                .lineWord {
+                    display: flex;
+                    align-items: center;
+                    /*padding: 1rem 0;*/
+                    .line {
                         height: 2px;
-                        line-height: 16px;
+                        background-color: #000;
+                        flex: 1;
                     }
-                    .signWord:before {
-                        left: 0%;
+                    .word {
+                        margin: 0 10px;
                     }
-                    .signWord:after {
-                        right: 0%;
-                    }
+                }
+
+                /*第三方登录鼠标移过去变小手*/
+                .thirdLogin:hover {
+                    cursor: pointer;
                 }
             }
 
-            /*第三方登录鼠标移过去变小手*/
-            .thirdLogin:hover {
-                cursor: pointer;
-            }
-
-            /*表单输入框的下边距*/
-            .ivu-form-item {
-                margin-bottom: 10px;
-            }
         }
     }
 </style>
