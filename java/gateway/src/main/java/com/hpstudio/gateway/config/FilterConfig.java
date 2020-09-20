@@ -11,6 +11,7 @@ import com.hpstudio.gateway.service.UserService;
 import io.jsonwebtoken.ExpiredJwtException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.context.ApplicationContext;
@@ -36,11 +37,21 @@ public class FilterConfig implements GlobalFilter, Ordered {
     @Autowired
     private UserService userService;
 
+    @Value("${filter}")
+    private boolean filter;
+
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         ServerHttpResponse response = exchange.getResponse();
         ServerHttpRequest request = exchange.getRequest();
-        ApplicationContext applicationContext = exchange.getApplicationContext();
+        if (!filter) {
+            return chain.filter(exchange);
+        }
+        String value = request.getPath().value();
+        // TODO: 2020/9/17 先暂时这样不过滤注册用户的接口
+        if (value.equals("/forum/user/add")) {
+            return chain.filter(exchange);
+        }
         String token = request.getHeaders().getFirst("token");
         if (null == token) {
             return getVoidMono(response, TOKEN_NULL_CODE, TOKEN_NULL_MSG);
