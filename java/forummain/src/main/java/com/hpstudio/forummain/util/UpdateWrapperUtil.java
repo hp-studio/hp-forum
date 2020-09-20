@@ -86,7 +86,7 @@ public class UpdateWrapperUtil<T> {
             throw new WrapperException(idField + " 主键的值为null");
         }
         wrapper.eq(idField, idVal);
-        wrapper.eq("isdel", 1);
+        wrapper.set("isdel", 1);
         return wrapper;
     }
 

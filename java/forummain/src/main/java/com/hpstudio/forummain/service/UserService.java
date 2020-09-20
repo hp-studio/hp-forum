@@ -21,21 +21,21 @@ public class UserService extends ServiceImpl<UserMapper, User> {
     @Autowired
     private UpdateWrapperUtil<User> updateWrapperUtil;
 
-    public boolean login(User user) {
-        //目前限定只能root用户登录
-        User root = baseMapper.selectRoot();
-        if (root.getId() == user.getId()) {
-            return true;
-        }
-        return false;
-    }
-
     public boolean updateUser(User user) throws IllegalAccessException {
         UpdateWrapper<User> wrapper = updateWrapperUtil.updateWrapper(user, true);
         return update(wrapper);
     }
 
-    public IPage<User> selectUsers(int page, int limit) {
-        return baseMapper.selectUsers(new Page<>(page, limit));
+    public boolean deleteUser(User user) throws NoSuchFieldException, IllegalAccessException {
+        UpdateWrapper<User> wrapper = updateWrapperUtil.deleteWrapper(user);
+        return update(wrapper);
+    }
+
+    public IPage<User> getUsers(int page, int limit) {
+        return baseMapper.getUsers(new Page<>(page, limit));
+    }
+
+    public User getUser(Integer id) {
+        return baseMapper.getUser(id);
     }
 }
