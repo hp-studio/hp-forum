@@ -15,3 +15,8 @@ spring:
   cloud:
     nacos:
       server-addr: localhost:8848
+  profiles:
+    active: dev
+logging:
+  level:
+    com.hpstudio.forummain: debug
