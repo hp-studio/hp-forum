@@ -1,11 +1,16 @@
 <template>
-  <div class="home-notice">home-notice</div>
+    <div class="home-notice">
+        <NoticeList></NoticeList>
+    </div>
 </template>
 
 <script>
-export default {
-  name: "home-notice"
-};
+    import NoticeList from "./components/NoticeList";
+
+    export default {
+        components: {NoticeList},
+        name: "home-notice"
+    };
 </script>
 
 <style lang="scss" scoped></style>
