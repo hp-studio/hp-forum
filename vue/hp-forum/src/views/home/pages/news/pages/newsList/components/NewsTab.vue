@@ -1,0 +1,55 @@
+<template>
+    <Tabs :value="newsData[0].title">
+        <TabPane v-for="item in newsData" :key="item.title" :label="item.title" :name="item.title">
+            <div v-for="item1 in item.news" :key="item1.id">{{item1.title}}</div>
+        </TabPane>
+    </Tabs>
+</template>
+
+<script>
+    export default {
+        name: "NewsTab",
+        data() {
+            return {
+                newsData: [
+                    {
+                        title: "科技",
+                        news: [{
+                            id: 1,
+                            title: "科技改变生活",
+                            content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam aperiam assumenda at autem consequuntur, cumque dolorum esse est et ex harum illum iusto laboriosam laudantium modi officiis pariatur perferendis perspiciatis porro possimus praesentium provident quae quas quia quisquam quod quos recusandae sapiente sit soluta tenetur unde vitae. Consequatur debitis distinctio dolores eligendi ipsum mollitia nesciunt possimus quasi quisquam tempore. Dicta minus nihil nulla quam quo. Deserunt dicta eaque iure modi molestias perspiciatis quis repellat, repellendus rerum voluptatum. Animi commodi, dolorem eius eligendi eos eum eveniet excepturi exercitationem ipsam minima mollitia natus nihil perferendis porro quisquam reiciendis repellat rerum voluptas.\n",
+                        }]
+                    },
+                    {
+                        title: "军事",
+                        news: []
+                    },
+                    {
+                        title: "生活",
+                        news: [
+                            {
+                                id: 1,
+                                title: "科技改变生活",
+                                content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam aperiam assumenda at autem consequuntur, cumque dolorum esse est et ex harum illum iusto laboriosam laudantium modi officiis pariatur perferendis perspiciatis porro possimus praesentium provident quae quas quia quisquam quod quos recusandae sapiente sit soluta tenetur unde vitae. Consequatur debitis distinctio dolores eligendi ipsum mollitia nesciunt possimus quasi quisquam tempore. Dicta minus nihil nulla quam quo. Deserunt dicta eaque iure modi molestias perspiciatis quis repellat, repellendus rerum voluptatum. Animi commodi, dolorem eius eligendi eos eum eveniet excepturi exercitationem ipsam minima mollitia natus nihil perferendis porro quisquam reiciendis repellat rerum voluptas.\n",
+                            },
+                            {
+                                id: 2,
+                                title: "科技改变生活",
+                                content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam aperiam assumenda at autem consequuntur, cumque dolorum esse est et ex harum illum iusto laboriosam laudantium modi officiis pariatur perferendis perspiciatis porro possimus praesentium provident quae quas quia quisquam quod quos recusandae sapiente sit soluta tenetur unde vitae. Consequatur debitis distinctio dolores eligendi ipsum mollitia nesciunt possimus quasi quisquam tempore. Dicta minus nihil nulla quam quo. Deserunt dicta eaque iure modi molestias perspiciatis quis repellat, repellendus rerum voluptatum. Animi commodi, dolorem eius eligendi eos eum eveniet excepturi exercitationem ipsam minima mollitia natus nihil perferendis porro quisquam reiciendis repellat rerum voluptas.\n",
+                            },
+                            {
+                                id: 3,
+                                title: "科技改变生活",
+                                content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam aperiam assumenda at autem consequuntur, cumque dolorum esse est et ex harum illum iusto laboriosam laudantium modi officiis pariatur perferendis perspiciatis porro possimus praesentium provident quae quas quia quisquam quod quos recusandae sapiente sit soluta tenetur unde vitae. Consequatur debitis distinctio dolores eligendi ipsum mollitia nesciunt possimus quasi quisquam tempore. Dicta minus nihil nulla quam quo. Deserunt dicta eaque iure modi molestias perspiciatis quis repellat, repellendus rerum voluptatum. Animi commodi, dolorem eius eligendi eos eum eveniet excepturi exercitationem ipsam minima mollitia natus nihil perferendis porro quisquam reiciendis repellat rerum voluptas.\n",
+                            },
+                        ]
+                    }
+                ]
+            };
+        },
+    };
+</script>
+
+<style lang="scss" scoped>
+
+</style>

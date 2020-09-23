@@ -9,15 +9,15 @@
       :active-name="activeName"
       @on-select="handleMenuSelect"
     >
-      <MenuItem name="home-index">
+      <MenuItem name="index">
         <Icon type="ios-home" />
         首页
       </MenuItem>
-      <MenuItem name="home-news">
+      <MenuItem name="news">
         <Icon type="ios-paper" />
         新闻
       </MenuItem>
-      <MenuItem name="home-notice">
+      <MenuItem name="notice">
         <Icon type="ios-megaphone" />
         公告
       </MenuItem>

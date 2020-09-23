@@ -1,5 +1,5 @@
 <template>
-    <div class="footer">
+    <div class="home-footer">
         <div class="copyright">
             Copyright © 2020 [owner]. All rights reserved.
             版權所有© 2020 [owner]
@@ -14,7 +14,7 @@
 </script>
 
 <style lang="scss" scoped>
-    .footer {
+    .home-footer {
         padding: 1rem;
         text-align: center;
     }

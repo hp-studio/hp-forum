@@ -15,6 +15,13 @@ import 'quill/dist/quill.bubble.css'; // for bubble theme
 //注册axios（待封装）
 Vue.prototype.$axios = axios;
 
+// 引入工具类
+import utils from "./utils";
+
+Vue.prototype.$utils = utils;
+//全剧注册alert方法
+Vue.prototype.$alert = utils.alert;
+
 Vue.use(ViewUI);
 
 Vue.use(VueQuillEditor, /* { default global options } */);

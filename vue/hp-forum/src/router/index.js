@@ -19,52 +19,64 @@ const routes = [
         children: [
             {
                 path: "",
-                name: "home-index",
+                //如果有默认路由 则忽略父路由的name
+                name: "index",
                 //用于懒加载路由提高性能
                 component: () => import("../views/home/pages/index/"),
                 meta: {
                     //用于识别顶部导航归属关系
-                    homeMenuName: "home-index"
+                    homeMenuName: "index"
                 }
             },
             {
                 path: "news",
-                name: "home-news",
                 //用于懒加载路由提高性能
                 component: () => import("../views/home/pages/news/"),
-                meta: {
-                    //用于识别顶部导航归属关系
-                    homeMenuName: "home-news"
-                }
+                children: [
+                    {
+                        path: "",
+                        name: "news",
+                        component: () => import("../views/home/pages/news/pages/newsList"),
+                        meta: {
+                            //用于识别顶部导航归属关系
+                            homeMenuName: "news"
+                        },
+                    },
+                    {
+                        path: "",
+                        name: "news-search",
+                        component: () => import("../views/home/pages/news/pages/newsSearch"),
+                        meta: {
+                            //用于识别顶部导航归属关系
+                            homeMenuName: "news"
+                        },
+                    },
+                ]
             },
             {
                 path: "notice/",
                 //用于懒加载路由提高性能
                 component: () => import("../views/home/pages/notice/"),
-                meta: {
-                    //用于识别顶部导航归属关系
-                    homeMenuName: "home-notice"
-                },
                 children: [
                     {
                         path: "",
                         //如果有默认路由 则忽略父路由的name
-                        name: "home-notice",
+                        name: "notice",
                         //用于懒加载路由提高性能
                         component: () => import("../views/home/pages/notice/pages/noticeList"),
                         meta: {
                             //用于识别顶部导航归属关系
-                            homeMenuName: "home-notice"
+                            homeMenuName: "notice"
                         },
                     },
                     {
                         path: "noticePage",
-                        name: "home-notice-noticePage",
+                        name: "noticePage",
                         //用于懒加载路由提高性能
                         component: () => import("../views/home/pages/notice/pages/noticePage"),
                         meta: {
                             //用于识别顶部导航归属关系
-                            homeMenuName: "home-notice"
+                            homeMenuName: "notice"
                         },
                     }
                 ]
