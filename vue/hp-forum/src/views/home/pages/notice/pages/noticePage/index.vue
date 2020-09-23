@@ -1,5 +1,6 @@
 <template>
     <div class="noticePage">
+        noticePage
         <div class="sep title">
             <div>{{notice.title}}</div>
             <div class="close" v-on:click="close">
@@ -17,7 +18,7 @@
 
 <script>
     export default {
-        name: "NoticePage",
+        name: "noticePage",
         data() {
             return {
                 notice: {title: '', addDate: '', text: ''}

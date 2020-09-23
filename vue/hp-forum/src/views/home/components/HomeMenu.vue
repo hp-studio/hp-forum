@@ -68,6 +68,7 @@ export default {
     //  监听路由
     this.$router.beforeEach((to, from, next) => {
       // ...
+      console.log(to.meta.homeMenuName);
       this.activeName = to.meta.homeMenuName || "";
       next();
     });

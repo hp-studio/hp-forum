@@ -85,7 +85,7 @@
                         //token本地存储
                         localStorage.setItem("token", data.data);
                         this.rememberOperating(this.remember);
-                        this.$router.replace({name: "home-index"});
+                        // this.$router.replace({name: "home-index"});
                     }).catch(exception => {
                         console.log(exception);
                     });

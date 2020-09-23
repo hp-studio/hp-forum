@@ -1,5 +1,6 @@
 <template>
     <div class="noticeList">
+        noticeList
         <div class="body" v-for="(notice) in notices">
             <div class="title">
                 <a class="link"><h2>{{notice.title}}</h2></a>
@@ -17,7 +18,7 @@
 
 <script>
     export default {
-        name: "NoticeList",
+        name: "noticeList",
         data() {
             return {
                 notices: [{id: '', title: '', addDate: ''}],

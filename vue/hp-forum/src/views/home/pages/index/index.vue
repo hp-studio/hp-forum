@@ -14,7 +14,7 @@
     import Posts from "./components/Posts"
 
     export default {
-        name: "home-index",
+        name: "home",
         components: {
             Carousel,
             Topics,
