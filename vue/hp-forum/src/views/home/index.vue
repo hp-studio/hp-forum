@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <HomeMenu></HomeMenu>
-        <router-view/>
+        <router-view class="content"/>
         <HomeFooter></HomeFooter>
     </div>
 </template>
@@ -21,5 +21,15 @@
         width: 100%;
         height: 100%;
         overflow: auto;
+        //使用弹性盒子解决footer置底问题
+        display: flex;
+        //将轴改为纵轴
+        flex-direction: column;
+        .content{
+            flex: auto;
+        }
+        .footer{
+            flex: auto;
+        }
     }
 </style>
