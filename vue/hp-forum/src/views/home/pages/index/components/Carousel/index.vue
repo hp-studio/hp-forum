@@ -30,7 +30,7 @@
 
 <style lang="scss" scoped>
     .carousel {
-        margin:1rem;
+        /*margin:1rem;*/
         .carousel-item {
             cursor: pointer;
             height: 200px;

@@ -36,6 +36,7 @@
 <style lang="scss" scoped>
     .news-filter {
         width: 50rem;
-        margin: 2rem auto;
+        margin: 0 auto;
+        padding: 2rem;
     }
 </style>
