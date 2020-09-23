@@ -43,7 +43,7 @@ const routes = [
                         },
                     },
                     {
-                        path: "",
+                        path: "search",
                         name: "news-search",
                         component: () => import("../views/home/pages/news/pages/newsSearch"),
                         meta: {

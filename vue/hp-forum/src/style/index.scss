@@ -2,3 +2,16 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+.list-items {
+  padding: .5rem;
+  margin: .5rem;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+
+.list-items:hover {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, .1)
+}
