@@ -6,7 +6,7 @@
 
 <script>
     export default {
-        name: "home-notice"
+        name: "home-notice",
     };
 </script>
 

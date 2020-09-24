@@ -1,9 +1,8 @@
 <template>
     <div class="noticeList">
-        noticeList
-        <div class="body" v-for="(notice) in notices">
+        <div class="body" v-for="(notice) in notices" :key="notice.id">
             <div class="title">
-                <a class="link"><h2>{{notice.title}}</h2></a>
+                <a class="link" @click="getNoticePage(notice.id)"><h2>{{notice.title}}</h2></a>
             </div>
             <div class="addDate">
                 <h2>{{notice.addDate}}</h2>
@@ -44,6 +43,14 @@
                     this.notices = data.data.records;
                     this.total = data.data.total;
                 })
+            },
+            getNoticePage(id) {
+                this.$router.push({
+                    path: 'noticePage',
+                    query: {
+                        id: id
+                    }
+                })
             }
         },
         mounted() {
@@ -52,8 +59,10 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     .noticeList {
+        height: 100%;
+
         .body {
             text-align: center;
             margin: 20px auto;
@@ -69,4 +78,5 @@
             justify-content: center;
         }
     }
+
 </style>
