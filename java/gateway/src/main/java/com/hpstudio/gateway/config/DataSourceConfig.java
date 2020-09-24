@@ -25,6 +25,7 @@ public class DataSourceConfig {
         dataSource.setDriverClassName(entity.getDriver());
         dataSource.setUsername(entity.getUserName());
         dataSource.setPassword(entity.getPassword());
+        dataSource.setMaxLifetime(60000);
         return dataSource;
     }
 }

@@ -2,11 +2,9 @@ package com.hpstudio.gateway.config;
 
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
+import org.springframework.cloud.gateway.support.RouteMetadataUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.server.ServerWebExchange;
-
-import java.util.function.Predicate;
 
 /**
  * @author mawen
@@ -22,7 +20,9 @@ public class GateWayConfig {
                 .route(p -> p.path("/forum/**")
                         .filters(f -> f.hystrix(config -> config.setName("defaultHystrix")
                                 .setFallbackUri("forward:/fallback")))
-                        .uri("lb://forummain"))
+                        .uri("lb://forummain")
+                        .metadata(RouteMetadataUtils.RESPONSE_TIMEOUT_ATTR, 5000)
+                        .metadata(RouteMetadataUtils.CONNECT_TIMEOUT_ATTR, 2000))
                 .build();
     }
 }
