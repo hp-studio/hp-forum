@@ -22,8 +22,15 @@ Vue.prototype.$utils = utils;
 //全剧注册alert方法
 Vue.prototype.$alert = utils.alert;
 
+// 注册全局组件
+import {BackupBtn} from "./components";
+
+Vue.component('BackupBtn', BackupBtn);
+
+//注册iViewUI
 Vue.use(ViewUI);
 
+//注册富文本编辑器
 Vue.use(VueQuillEditor, /* { default global options } */);
 
 Vue.config.productionTip = false;

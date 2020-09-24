@@ -15,7 +15,9 @@
 
 <style lang="scss" scoped>
     .home-footer {
-        padding: 1rem;
+        height: 40px;
+        line-height: 40px;
+        /*padding: 1rem;*/
         text-align: center;
     }
 </style>

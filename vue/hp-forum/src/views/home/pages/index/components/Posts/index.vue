@@ -2,7 +2,7 @@
     <div class="posts">
         帖子列表
         <PostCtrl :topic="topic"></PostCtrl>
-        <div v-for="item in postList" class="posts-post" :key="item">
+        <div v-for="item in postList" class="list-items" :key="item">
             Col
         </div>
         <div class="posts-post post-nextPage">下一页</div>
@@ -30,18 +30,6 @@
     .posts {
         padding: .5rem;
 
-        .posts-post {
-            padding: .5rem;
-            margin: .5rem;
-            border: 1px solid #eee;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all .3s ease-in-out;
-        }
-
-        .posts-post:hover {
-            box-shadow: 2px 2px 2px rgba(0, 0, 0, .1)
-        }
         .post-nextPage{
             text-align: center;
         }

@@ -4,13 +4,13 @@
         <TopicCtrl></TopicCtrl>
         <Row>
             <Col :xs="24" :sm="8" v-for="item in topicList.slice(0,3)" :key="item.title">
-                <div class="topics-topic topics-topic-hot">
+                <div class="list-items topics-topic-hot">
                     <div style="width:100%;height: 100px;background: cornflowerblue"></div>
                     {{item.title}}
                 </div>
             </Col>
             <Col :xs="24" :sm="8" :lg="4" v-for="item in topicList.slice(3)" :key="item.title">
-                <div class="topics-topic">{{item.title}}</div>
+                <div class="list-items">{{item.title}}</div>
             </Col>
         </Row>
     </div>
@@ -43,20 +43,6 @@
     .topics {
         padding: .5rem;
 
-        .topics-topic {
-            padding: .5rem;
-            margin: .5rem;
-            border: 1px solid #eee;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all .3s ease-in-out;
-        }
-
-        .topics-topic:hover {
-            box-shadow: 2px 2px 2px rgba(0, 0, 0, .1)
-
-
-        }
 
         .topics-topic-hot {
 
