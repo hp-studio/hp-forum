@@ -6,6 +6,7 @@
                     <Card v-for="item1 in item.news.slice().splice(0,3)" class="list-items news-card" :key="item1.id"
                           :to="cardGoNewsDetailFuncObj(item1.id)">
                         <p slot="title">{{item1.title}}</p>
+                       <i class="iconfont">&#xe95a;</i>
                         <p>Content of card</p>
                         <p>Content of card</p>
                         <p>Content of card</p>

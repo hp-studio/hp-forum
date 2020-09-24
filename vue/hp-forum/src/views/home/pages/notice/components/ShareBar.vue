@@ -8,10 +8,10 @@
                 <img src="@/assets/wx.png" alt="">
             </div>
             <div class="bar" @click="share('QQ分享')">
-                <img src="src/assets/qq.png" alt="">
+                <img src="@/assets/qq.png" alt="">
             </div>
             <div class="bar" @click="share('微博分享')">
-                <img src="src/assets/wb.png" alt="">
+                <img src="@/assets/wb.png" alt="">
             </div>
         </div>
     </div>
