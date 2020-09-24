@@ -3,7 +3,7 @@
 <mapper namespace="com.hpstudio.forummain.mapper.NoticeMapper">
 
     <select id="getNoticeList" resultType="com.hpstudio.forummain.entity.Notice">
-        select * from notice where isDel = 0
+        select id,title,addDate from notice where isDel = 0 order by addDate desc
     </select>
 
     <select id="getNotice" resultType="com.hpstudio.forummain.entity.Notice">
