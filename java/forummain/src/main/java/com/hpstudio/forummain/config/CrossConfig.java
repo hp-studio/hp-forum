@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @email 455766076@qq.com
  * @description 解决跨域
  */
-@ConditionalOnProperty(havingValue = "true",value = "${overCross}")
+@ConditionalOnProperty(havingValue = "true",name = "overCross")
 @Configuration
 public class CrossConfig {
 
