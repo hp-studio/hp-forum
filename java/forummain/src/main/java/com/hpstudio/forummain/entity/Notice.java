@@ -2,11 +2,11 @@ package com.hpstudio.forummain.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 /**
  * @author mawen
@@ -26,6 +26,7 @@ public class Notice {
     //公告正文
     private String text;
     //公告日期
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
     private Timestamp addDate;
     //是否删除
     private Integer isDel;
