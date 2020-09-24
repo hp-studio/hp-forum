@@ -12,7 +12,21 @@
                 word: ""
             };
         },
+        mounted() {
+            this.word = this.$route.query.word || "";
+            //  监听路由匹配搜索条件
+            this.$router.beforeEach((to, from, next) => {
+                // ...
+                this.word = to.query.word;
+                next();
+            });
+        },
         methods: {
+            //获取搜索结果
+            getSearchData() {
+                console.log(this.word);
+            },
+            // 监听搜索
             handleSearchNews() {
                 if (this.word === "") {
                     this.$alert({

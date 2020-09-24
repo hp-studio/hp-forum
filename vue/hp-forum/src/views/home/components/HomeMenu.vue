@@ -75,7 +75,6 @@
             //  监听路由
             this.$router.beforeEach((to, from, next) => {
                 // ...
-                console.log(to.meta.homeMenuName);
                 this.activeName = to.meta.homeMenuName || "";
                 next();
             });
@@ -83,11 +82,15 @@
         methods: {
             // 监听导航点击
             handleMenuSelect(MenuItemName) {
-                if (MenuItemName !== this.activeName) {
-                    this.$router.push({
-                        name: MenuItemName
-                    });
-                }
+                // if (MenuItemName !== this.activeName) {
+                //     this.$router.push({
+                //         name: MenuItemName
+                //     });
+                // }
+                // 由于使用了屏蔽err，所以不需要进行判断
+                this.$router.push({
+                    name: MenuItemName
+                });
             },
             // 搜索
             handleSearch(searchWord) {

@@ -51,6 +51,15 @@ const routes = [
                             homeMenuName: "news"
                         },
                     },
+                    {
+                        path: "detail",
+                        name: "news-detail",
+                        component: () => import("../views/home/pages/news/pages/newsDetail"),
+                        meta: {
+                            //用于识别顶部导航归属关系
+                            homeMenuName: "news"
+                        },
+                    },
                 ]
             },
             {
@@ -90,9 +99,15 @@ const routes = [
         component: () => import("../views/login")
     }
 ];
+//修复路由重复点击报错的问题
+const originalPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
+    return originalPush.call(this, location).catch(err => err);
+};
 
 const router = new VueRouter({
     routes
 });
+
 
 export default router;

@@ -1,14 +1,20 @@
 <template>
     <div class="news-search">
+        <BackupBtn></BackupBtn>
         <div class="newsList">
-            <div v-for="item in newsList" :key="item.id" class="list-items">{{item.title}}</div>
+            <div v-for="item in newsList" :key="item.id" class="list-items" @click="goNewsDetail(item.id)">
+                {{item.title}}
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+    import {newsMixins} from "@/mixins";
+
     export default {
         name: "newsSearch",
+        mixins: [newsMixins],
         data() {
             return {
                 newsList: [
@@ -44,6 +50,30 @@
                     },
                 ]
             };
+        },
+        mounted() {
+            this.getNews(this.$route.query.word);
+        },
+
+        //路由信息更新时更新数据
+        beforeRouteUpdate(to, from, next) {
+            this.getNews(to.query.word);
+            next();
+        },
+        methods: {
+            //获取数据
+            getNews(word) {
+                //  如果无搜索信息则跳出页面
+                if (word === "") {
+                    this.$route.replace({
+                        name: "news"
+                    });
+                    return false;
+                }
+                console.log("获取数据:" + word);
+
+            },
+
         },
     };
 </script>

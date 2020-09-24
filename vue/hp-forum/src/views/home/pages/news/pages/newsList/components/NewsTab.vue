@@ -3,7 +3,8 @@
         <TabPane v-for="item in newsData" :key="item.title" :label="item.title" :name="item.title">
             <div class="news-tab">
                 <div class="news-cardList">
-                    <Card v-for="item1 in item.news.slice().splice(0,3)" class="list-items news-card" :key="item1.id">
+                    <Card v-for="item1 in item.news.slice().splice(0,3)" class="list-items news-card" :key="item1.id"
+                          :to="cardGoNewsDetailFuncObj(item1.id)">
                         <p slot="title">{{item1.title}}</p>
                         <p>Content of card</p>
                         <p>Content of card</p>
@@ -11,7 +12,8 @@
                     </Card>
                 </div>
 
-                <div v-for="item1 in item.news.slice().splice(3)" class="list-items" :key="item1.id">{{item1.title}}
+                <div v-for="item1 in item.news.slice().splice(3)" class="list-items" :key="item1.id"
+                     @click="goNewsDetail(item1.id)">{{item1.title}}
                 </div>
 
             </div>
@@ -21,8 +23,16 @@
 </template>
 
 <script>
+    import {newsMixins} from "@/mixins";
+
     export default {
         name: "NewsTab",
+        mixins: [newsMixins],
+        methods: {
+            test() {
+                console.log("test");
+            }
+        },
         data() {
             return {
                 newsData: [
@@ -85,6 +95,7 @@
 
         .news-cardList {
             display: flex;
+
             .news-card {
                 display: inline-block;
                 flex: 1
