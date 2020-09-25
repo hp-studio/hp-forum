@@ -1,2 +1,10 @@
 filter: false
 overCross: true
+
+datasource:
+  config:
+    master:
+      driver: com.mysql.cj.jdbc.Driver
+      url: xxx
+      userName: xxx
+      password: xxx
