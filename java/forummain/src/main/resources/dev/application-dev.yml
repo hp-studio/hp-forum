@@ -1,1 +1,9 @@
 overCross: false
+
+datasource:
+  config:
+    master:
+      driver: xxx
+      url: xxx
+      userName: xxx
+      password: xxx
