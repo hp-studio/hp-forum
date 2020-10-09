@@ -12,5 +12,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+.news-detail{
+    padding: 1rem;
+}
 </style>

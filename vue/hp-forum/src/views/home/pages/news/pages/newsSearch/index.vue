@@ -1,6 +1,7 @@
 <template>
     <div class="news-search">
-        <BackupBtn></BackupBtn>
+        <NewsFilter></NewsFilter>
+        <BackupBtn target="news" title="返回起始页"></BackupBtn>
         <div class="newsList">
             <div v-for="item in newsList" :key="item.id" class="list-items" @click="goNewsDetail(item.id)">
                 {{item.title}}
@@ -11,9 +12,11 @@
 
 <script>
     import {newsMixins} from "@/mixins";
+    import NewsFilter from "../../components/NewsFilter";
 
     export default {
         name: "newsSearch",
+        components: {NewsFilter},
         mixins: [newsMixins],
         data() {
             return {
@@ -70,8 +73,6 @@
                     });
                     return false;
                 }
-                console.log("获取数据:" + word);
-
             },
 
         },
@@ -79,5 +80,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+    .news-search {
+        padding: 1rem;
+    }
 </style>
